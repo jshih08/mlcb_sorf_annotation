@@ -1,10 +1,11 @@
 Project scripts for the ML Comp Bio course. Objects can be regenerated using the provided scripts.
 
 ```md
-
+.
 ├── data
 │   ├── orfs_to_score.fa
 │   └── subset_300k_short.parquet.gz
+├── README.md
 ├── results
 │   ├── auprc.png
 │   ├── dt_rf_output.txt
@@ -18,5 +19,7 @@ Project scripts for the ML Comp Bio course. Objects can be regenerated using the
     ├── subset2.py
     ├── subset.py
     └── train_dt_rf.py
+
+4 directories, 14 files
 
 ```

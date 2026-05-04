@@ -1,0 +1,192 @@
+---------------------------------------
+Begin Slurm Prolog: May-01-2026 13:42:58
+Job ID:    5151111
+User ID:   avenkatesh89
+Account:   bios
+Job name:  train_dt_rf
+Partition: coc-cpu
+QOS:       coc-ice
+---------------------------------------
+Loading train set...
+Train set loaded: (3037305, 82)
+Loading test set...
+Test set loaded:  (294643, 82)
+
+Splitting train into 80% train / 20% validation...
+X_train: (2429844, 82)  pos=1061806  neg=1368038
+X_val:   (607461, 82)  pos=265452  neg=342009
+X_test:  (294643, 82)  pos=144649  neg=149994
+
+============================================================
+Training Decision Tree...
+Done in 93.9s
+
+============================================================
+DECISION TREE
+============================================================
+
+  --- Train ---
+    Accuracy:          0.8479  (misleading if imbalanced)
+    Balanced Accuracy: 0.8444  (corrects for imbalance)
+    Precision:         0.8322  (of predicted genes, how many real?)
+    Recall:            0.8167  (of real genes, how many caught?)
+    F1 macro:          0.8451  (harmonic mean, both classes)
+    F1 gene class:     0.8244  (F1 for gene class only)
+    F1 noise class:    0.8659  (F1 for noise class only)
+    MCC:               0.6904  (most honest, -1 to +1)
+    AUROC:             0.927  (0.5=random, 1.0=perfect)
+    AUPRC:             0.9126  (better than AUROC for imbalanced)
+    Confusion matrix:
+      TP (gene caught):    867174
+      FN (gene missed):    194632  <- silent loss
+      FP (noise as gene):  174862  <- false alarm
+      TN (noise caught):   1193176
+
+  --- Validation ---
+    Accuracy:          0.8464  (misleading if imbalanced)
+    Balanced Accuracy: 0.8427  (corrects for imbalance)
+    Precision:         0.8311  (of predicted genes, how many real?)
+    Recall:            0.8138  (of real genes, how many caught?)
+    F1 macro:          0.8435  (harmonic mean, both classes)
+    F1 gene class:     0.8224  (F1 for gene class only)
+    F1 noise class:    0.8647  (F1 for noise class only)
+    MCC:               0.6872  (most honest, -1 to +1)
+    AUROC:             0.9254  (0.5=random, 1.0=perfect)
+    AUPRC:             0.9106  (better than AUROC for imbalanced)
+    Confusion matrix:
+      TP (gene caught):    216035
+      FN (gene missed):    49417  <- silent loss
+      FP (noise as gene):  43906  <- false alarm
+      TN (noise caught):   298103
+
+  --- Test (final, unseen) ---
+    Accuracy:          0.7103  (misleading if imbalanced)
+    Balanced Accuracy: 0.7075  (corrects for imbalance)
+    Precision:         0.7933  (of predicted genes, how many real?)
+    Recall:            0.5543  (of real genes, how many caught?)
+    F1 macro:          0.702  (harmonic mean, both classes)
+    F1 gene class:     0.6526  (F1 for gene class only)
+    F1 noise class:    0.7515  (F1 for noise class only)
+    MCC:               0.437  (most honest, -1 to +1)
+    AUROC:             0.8183  (0.5=random, 1.0=perfect)
+    AUPRC:             0.797  (better than AUROC for imbalanced)
+    Confusion matrix:
+      TP (gene caught):    80172
+      FN (gene missed):    64477  <- silent loss
+      FP (noise as gene):  20892  <- false alarm
+      TN (noise caught):   129102
+
+Saved -> models/decision_tree.pkl
+
+============================================================
+Training Random Forest...
+Done in 384.9s
+
+============================================================
+RANDOM FOREST
+============================================================
+
+  --- Train ---
+    Accuracy:          0.9413  (misleading if imbalanced)
+    Balanced Accuracy: 0.9383  (corrects for imbalance)
+    Precision:         0.9491  (of predicted genes, how many real?)
+    Recall:            0.9146  (of real genes, how many caught?)
+    F1 macro:          0.94  (harmonic mean, both classes)
+    F1 gene class:     0.9315  (F1 for gene class only)
+    F1 noise class:    0.9486  (F1 for noise class only)
+    MCC:               0.8806  (most honest, -1 to +1)
+    AUROC:             0.9872  (0.5=random, 1.0=perfect)
+    AUPRC:             0.9844  (better than AUROC for imbalanced)
+    Confusion matrix:
+      TP (gene caught):    971178
+      FN (gene missed):    90628  <- silent loss
+      FP (noise as gene):  52117  <- false alarm
+      TN (noise caught):   1315921
+
+  --- Validation ---
+    Accuracy:          0.9129  (misleading if imbalanced)
+    Balanced Accuracy: 0.9084  (corrects for imbalance)
+    Precision:         0.9231  (of predicted genes, how many real?)
+    Recall:            0.8733  (of real genes, how many caught?)
+    F1 macro:          0.9109  (harmonic mean, both classes)
+    F1 gene class:     0.8975  (F1 for gene class only)
+    F1 noise class:    0.9242  (F1 for noise class only)
+    MCC:               0.8228  (most honest, -1 to +1)
+    AUROC:             0.9733  (0.5=random, 1.0=perfect)
+    AUPRC:             0.9691  (better than AUROC for imbalanced)
+    Confusion matrix:
+      TP (gene caught):    231818
+      FN (gene missed):    33634  <- silent loss
+      FP (noise as gene):  19301  <- false alarm
+      TN (noise caught):   322708
+
+  --- Test (final, unseen) ---
+    Accuracy:          0.7587  (misleading if imbalanced)
+    Balanced Accuracy: 0.7554  (corrects for imbalance)
+    Precision:         0.8961  (of predicted genes, how many real?)
+    Recall:            0.5751  (of real genes, how many caught?)
+    F1 macro:          0.7492  (harmonic mean, both classes)
+    F1 gene class:     0.7006  (F1 for gene class only)
+    F1 noise class:    0.7979  (F1 for noise class only)
+    MCC:               0.5497  (most honest, -1 to +1)
+    AUROC:             0.8951  (0.5=random, 1.0=perfect)
+    AUPRC:             0.8871  (better than AUROC for imbalanced)
+    Confusion matrix:
+      TP (gene caught):    83192
+      FN (gene missed):    61457  <- silent loss
+      FP (noise as gene):  9649  <- false alarm
+      TN (noise caught):   140345
+
+Saved -> models/random_forest.pkl
+
+Top 20 features (Random Forest):
+  gc2                   0.06385  ###################
+  left_dist             0.06354  ###################
+  right_dist            0.06152  ##################
+  CTG                   0.05095  ###############
+  orf_length            0.04544  #############
+  gc3                   0.04475  #############
+  seq_length            0.0445   #############
+  gc1                   0.04401  #############
+  TAC                   0.0377   ###########
+  AGG                   0.02719  ########
+  AAG                   0.02653  #######
+  TAT                   0.02606  #######
+  TCG                   0.01983  #####
+  AAC                   0.01921  #####
+  TGG                   0.01765  #####
+  GAG                   0.01575  ####
+  GAA                   0.01517  ####
+  GAC                   0.01497  ####
+  CAG                   0.01489  ####
+  CGA                   0.01479  ####
+
+============================================================
+FINAL COMPARISON — TEST SET ONLY
+============================================================
+Metric              Decision Tree   Random Forest
+-------------------------------------------------
+accuracy            0.7103          0.7587
+bal_acc             0.7075          0.7554
+precision           0.7933          0.8961
+recall              0.5543          0.5751
+f1_macro            0.702           0.7492
+f1_gene             0.6526          0.7006
+mcc                 0.437           0.5497
+auroc               0.8183          0.8951
+auprc               0.797           0.8871
+
+Full results saved -> models/results.csv
+All done.
+---------------------------------------
+Begin Slurm Epilog: May-01-2026 13:52:09
+Job ID:        5151111
+User ID:       avenkatesh89
+Account:       bios
+Job name:      train_dt_rf
+Resources:     cpu=8,mem=64G,node=1
+Rsrc Used:     cput=01:13:28,vmem=0,walltime=00:09:11,mem=10419492K,energy_used=0
+Partition:     coc-cpu
+QOS:           coc-ice
+Nodes:         atl1-1-01-005-4-1
+---------------------------------------
